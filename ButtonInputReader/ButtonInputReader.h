@@ -1,3 +1,13 @@
+/**
+    Signal Outputs:
+    0 = Do Nothinn
+    1 = 3 short button presses. Output signal
+    2 = 4 short button presses. Output signal
+    3 = N/A
+    4 = Extra long button press. Demo signal
+    5 = Long button press. Power toggle
+*/
+
 #ifdef ButtonInputReader_h
 #define ButtonInputReader_h
 #include "Arduino.h"
