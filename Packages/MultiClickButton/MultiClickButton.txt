@@ -1,0 +1,8 @@
+Events:
+0 = N/A
+1 = 1 long press
+2 = 1 double clicks
+3 = 2 double clicks
+4 = 3 double clicks
+...
+
