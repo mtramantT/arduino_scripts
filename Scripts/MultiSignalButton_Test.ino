@@ -10,5 +10,7 @@ void setup() {
 
 void loop() {
     int result = signalButton.detectInput();
-    Serial.println(result);
+    if (result > 0) {
+        Serial.println(result);
+    }
 }
