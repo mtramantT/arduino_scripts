@@ -5,8 +5,6 @@ MultiClickButton::MultiClickButton(int pin) {
     _pin = pin;
     _currentState = RELEASED;
     _previousState = RELEASED;
-    // _lastDebounceTime = 0;
-    // _lastSteadyState = RELEASED;
     _pressTime = 0;
     _releaseTime = 0;
     _dcOnRelease = false;
