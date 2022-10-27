@@ -8,6 +8,8 @@ MultiSignalButton::MultiSignalButton(int pin) {
     _pressedTime = 0;
     _releasedTime = 0;
     _isHoldEventActive = false;
+    _isDoubleClickOnRelease = false;
+    _isPendingDoubleClick = false;
 }
 
 int MultiSignalButton::detectInput() {
@@ -17,14 +19,24 @@ int MultiSignalButton::detectInput() {
     // Button was pressed.
     if (isPressed()) {
         _pressedTime = millis();
-        if ((mills() - _releasedTime) < DC_GAP) {
-            signal = DOUBLE_CLICK_SIGNAL;
+        _isHoldEventActive = false;
+        if ((mills() - _releasedTime) < DOUBLE_CLICK_WAIT_PERIOD && _isDoubleClickOnRelease == false && _isPendingDoubleClick == true) {
+            _isDoubleClickOnRelease = true;
+        } else {
+            _isDoubleClickOnRelease = false;
         }
+        _isPendingDoubleClick = false;
     } 
     // Button was released
     else if (isReleased()) {
         _releasedTime = millis();
-        _isHoldEventActive = false;
+        if (_isDoubleClickOnRelease == true) {
+            _isPendingDoubleClick = false;
+            _isDoubleClickOnRelease = false;
+            signal = DOUBLE_CLICK_SIGNAL;
+        } else {
+            _isPendingDoubleClick = true;
+        }
     }
 
     // Test for hold event.

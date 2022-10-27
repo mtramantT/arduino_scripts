@@ -25,6 +25,7 @@ class MultiSignalButton {
         unsigned long _pressedTime;         // Recorded time of button press.
         unsigned long _releasedTime;        // Recorded time of button release.
         bool _isHoldEventActive;
+        bool _isDoubleClickPending;
     public:
         MultiSignalButton(int pin);
         int detectInput();
