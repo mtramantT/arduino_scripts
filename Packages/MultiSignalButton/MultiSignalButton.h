@@ -9,8 +9,8 @@
 #define DOUBLE_CLICK_SIGNAL 2         // Double Click Event occured. The button had been pressed twice before a gap cooldown. 
 
 // Button States
-#define PRESSED LOW             // When the button is pressed, the input signal will be LOW.
-#define RELEASED HIGH           // When the button is released, the input signal will be HIGH.
+#define PRESSED HIGH             // When the button is pressed, the input signal will be LOW.
+#define RELEASED LOW           // When the button is released, the input signal will be HIGH.
 
 // Timings
 #define DEBOUNCE_TIME 50                    // Delay in which to wait for fluctuations to settle before another input can be registered
