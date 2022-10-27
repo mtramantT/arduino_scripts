@@ -20,7 +20,7 @@ int MultiSignalButton::detectInput() {
     if (isPressed()) {
         _pressedTime = millis();
         _isHoldEventActive = false;
-        if ((mills() - _releasedTime) < DOUBLE_CLICK_WAIT_PERIOD && _isDoubleClickOnRelease == false && _isPendingDoubleClick == true) {
+        if ((millis() - _releasedTime) < DOUBLE_CLICK_WAIT_PERIOD && _isDoubleClickOnRelease == false && _isPendingDoubleClick == true) {
             _isDoubleClickOnRelease = true;
         } else {
             _isDoubleClickOnRelease = false;
@@ -52,14 +52,14 @@ int MultiSignalButton::detectInput() {
 }
 
 
-bool isPressed() {
+bool MultiSignalButton::isPressed() {
     return _currentState == PRESSED && _previousState == RELEASED && ((millis() - _releasedTime) > DEBOUNCE_TIME);
 }
 
-bool isReleased() {
-    return _currentState == RELEASED && _previousState == PRESSED ((millis() - _pressedTime) > DEBOUNCE_TIME);
+bool MultiSignalButton::isReleased() {
+    return _currentState == RELEASED && _previousState == PRESSED && ((millis() - _pressedTime) > DEBOUNCE_TIME);
 }
 
-bool isHolding() {
+bool MultiSignalButton::isHolding() {
     return _currentState == PRESSED && ((millis() - _pressedTime) >= HOLD_DURATION);
 }

@@ -4,9 +4,9 @@
 #include "Arduino.h"
 
 // Output Signals
-#define CONTINUE_SIGNAL = 0             // Default signal to return incase of no new actions.
-#define LONG_CLICK_SIGNAL = 1           // Hold Event occured. The button was pressed for a long duration.
-#define DOUBLE_CLICK_SIGNAL = 2         // Double Click Event occured. The button had been pressed twice before a gap cooldown. 
+#define CONTINUE_SIGNAL 0             // Default signal to return incase of no new actions.
+#define LONG_CLICK_SIGNAL 1           // Hold Event occured. The button was pressed for a long duration.
+#define DOUBLE_CLICK_SIGNAL 2         // Double Click Event occured. The button had been pressed twice before a gap cooldown. 
 
 // Button States
 #define PRESSED LOW             // When the button is pressed, the input signal will be LOW.
@@ -25,10 +25,14 @@ class MultiSignalButton {
         unsigned long _pressedTime;         // Recorded time of button press.
         unsigned long _releasedTime;        // Recorded time of button release.
         bool _isHoldEventActive;
-        bool _isDoubleClickPending;
+        bool _isDoubleClickOnRelease;
+        bool _isPendingDoubleClick;
+        bool isPressed();
+        bool isReleased();
+        bool isHolding();
     public:
         MultiSignalButton(int pin);
         int detectInput();
-}
+};
 
 #endif
