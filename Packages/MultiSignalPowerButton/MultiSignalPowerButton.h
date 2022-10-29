@@ -1,5 +1,5 @@
-#ifndef MultiSignalButton_h
-#define MultiSignalButton_h
+#ifndef MultiSignalPowerButton_h
+#define MultiSignalPowerButton_h
 
 #include "Arduino.h"
 

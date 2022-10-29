@@ -1,4 +1,4 @@
-#include "MultiSignalButton.h"
+#include "MultiSignalPowerButton.h"
 
 MultiSignalButton::MultiSignalButton(int pin) {
     pinMode(_pin, INPUT);
