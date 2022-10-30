@@ -1,23 +1,22 @@
-#include "Photoresistor.h"
+#ifndef Photoresistor_h
+#define Photoresistor_h
 
-Photoresistor::Photoresistor(int pin, int threshold, int updatePeriod) {
-    _pin = pin;
-    _threshold = threshold;
-    _updatePeriod = updatePeriod;
-}
+#include "Arduino.h"
 
-Photoresistor::detectInput() {
-    int readings = 0;
-    for (int i=0; i<=_updatePeriod; i++ ) {
-        int reading = analogRead(_pin);
-        readings += reading;
-        delay(50);
-    }
+#define ON 1
+#define OFF 0
 
-    if ((readings / _updatePeriod) < threshold) {
-        return ON;
-    } else {
-        return OFF;
-    }
+class Photoresistor {
+    private:
+        int _pin;
+        int _threshold;
+        int _readings[];
+    public:
+        Photoresistor(int pin, int threshold, int updatePeriod = 100);
+        // Photoresistor(int pin, int updatePeriod);
+
+        int detectInput();
 
 }
+
+#endif
