@@ -10,13 +10,10 @@ class Photoresistor {
     private:
         int _pin;
         int _threshold;
-        int _readings[];
+        int _updatePeriod;
     public:
-        Photoresistor(int pin, int threshold, int updatePeriod = 100);
-        // Photoresistor(int pin, int updatePeriod);
-
+        Photoresistor(int pin, int threshold, int updatePeriod);
         int detectInput();
-
-}
+};
 
 #endif
