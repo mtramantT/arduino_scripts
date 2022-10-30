@@ -12,7 +12,7 @@ class Photoresistor {
         int _threshold;
         int _updatePeriod;
     public:
-        Photoresistor(int pin, int threshold, int updatePeriod = 50);
+        Photoresistor(int pin, int threshold, int updatePeriod);
         int detectInput();
 };
 
